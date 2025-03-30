@@ -180,12 +180,15 @@ class BlueskyHistoricalSearch:
         has_images = False
         if hasattr(post, 'embed'):
             embed = post.embed
-            if hasattr(embed, '$type'):
-                has_images = (
-                    embed.type == 'app.bsky.embed.images' or
-                    (embed.type == 'app.bsky.embed.external' and hasattr(embed, 'thumb'))
-                )
-        
+            if embed:
+                if 'images' in embed.__dict__:
+                    has_images = True
+                    # download images
+                    image_urls = self._get_image_data(post)
+                    print(image_urls)
+                    [self._download_image(image_url) for image_url in image_urls]
+
+
         # Check for reply
         reply_to = None
         if hasattr(post, 'reply') and post.reply:
@@ -210,12 +213,49 @@ class BlueskyHistoricalSearch:
             'author': post.author.handle if hasattr(post, 'author') and hasattr(post.author, 'handle') else '',
             'uri': post.uri if hasattr(post, 'uri') else '',
             'has_images': has_images,
+            'image_urls': image_urls if has_images else [],
             'reply_to': reply_to,
             'web_url': web_url,
             'likes': post.likeCount if hasattr(post, 'likeCount') else 0,
             'reposts': post.repostCount if hasattr(post, 'repostCount') else 0
         }
-    
+        
+    def _get_image_data(self, post):
+        image_urls = []
+        if hasattr(post, 'embed') and post.embed:
+            image_list = post.embed.__dict__.get('images')[0]   # TODO: check if multiple images               
+            image_urls.append(image_list['fullsize'])
+
+        return image_urls
+            
+    def _download_image(self, image_url):
+        """
+        Download an image from a URL
+        
+        Args:
+        
+            image_url (str): URL of the image to download
+        """
+        try:
+            response = requests.get(image_url)
+            if response.status_code == 200:
+                # make sure image directory exists
+                image_dir = Path(self.output_folder) / "images"
+                image_dir.mkdir(parents=True, exist_ok=True)
+                image_fp = image_dir / f"{image_url.split('/')[-1]}"
+                # replace @jpeg with .jpeg
+                image_fp = image_fp.with_name(image_fp.name.replace('@jpeg', '.jpeg'))
+                
+                with open(image_fp, 'wb') as f:
+                    f.write(response.content)
+            else:
+                print(f"Failed to download image: {image_url}")
+                return None
+        except Exception as e:
+            print(f"Error downloading image: {e}")
+            return None
+        # TODO: maybe check if already downloaded (bigger task)
+            
     def _save_post_data(self, post_data):
         """
         Save post data to the output file
@@ -223,7 +263,6 @@ class BlueskyHistoricalSearch:
         Args:
             post_data (dict): Post data to save
         """
-        print(self.output_folder)
         self.output_file = self.output_folder / f"bluesky_posts.jsonl"
     
         print(f"Saving post data to {self.output_file}")
@@ -320,7 +359,7 @@ if __name__ == "__main__":
     parser.add_argument("-psswrd", "--password", type=str, help="Bluesky password", default=None)
     parser.add_argument("-days", "--num_days_prev", type=int, help="Number of days to search back", default=1)
     parser.add_argument("-kwargs", "--keywords", type=str, help="Comma-separated keywords to search for")
-    parser.add_argument("-ims", "--only_images", action='store_true', help="Only include posts with images")
+    parser.add_argument("-ims", "--only_images", action='store_true', help="Only include posts with images")    # TODO: make this do its legwork
     parser.add_argument("-lim", "--limit", type=int, help="Limit the number of posts to retrieve", default=10)
     
     args = parser.parse_args()
