@@ -1,0 +1,10 @@
+*.jsonl
+
+# private account details
+auth.yaml
+
+# results
+bluesky_analysis*
+
+# local files
+__pycache__/
