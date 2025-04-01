@@ -15,3 +15,9 @@ def get_repo_root():
 repo_dir = get_repo_root()
 
 auth_fp = repo_dir / "auth.yaml"
+
+bluesky_data_dir = repo_dir / "bluesky_data"
+bluesky_historic_searches_dir = bluesky_data_dir / "historic_searches"
+bluesky_images_dir = bluesky_data_dir / "images"
+# bluesky_image_urls_fp = bluesky_data_dir / "image_urls.csv"
+bluesky_processed_posts_fp = bluesky_data_dir / "processed_posts.csv"

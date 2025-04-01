@@ -4,7 +4,9 @@
 auth.yaml
 
 # results
-bluesky_analysis*
+bluesky_data/
 
 # local files
 __pycache__/
+.DS_Store
+
