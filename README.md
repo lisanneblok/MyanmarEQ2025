@@ -10,8 +10,7 @@ MyanmarEQ2025 is a collaborative volunteer project under IMPACTSquad, focused on
 
 ## Areas of Interest
    ![Areas of Interest](images/Areas_Of_Interest.png)  
-   Defined in `AreasOfInterest.png`, encompassing the most severely affected districts.
-
+   
 ## Data & Methods
 The project utilizes pre- and post-event satellite imagery, machine learning-based classification, and crowdsourced tagging to identify and categorize building damage levels across affected regions.
 
@@ -20,8 +19,6 @@ Key components:
 - Damage classification based on change detection (amplitude/coherence)
 - Post-processing to reduce false positives
 - Visualization through Mapbox-based interactive maps
-
-## Repository Structure
 
 ## Web Map Visualization
 https://bentonite.github.io/Myanmar-Earthquake-Damage-Map/
