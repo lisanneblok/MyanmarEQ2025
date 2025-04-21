@@ -8,6 +8,10 @@ MyanmarEQ2025 is a collaborative volunteer project under IMPACTSquad, focused on
 - Visualize damage information through an interactive web map
 - Openly share geospatial data and findings for public and academic use
 
+## Areas of Interest
+   ![Areas of Interest](images/Areas_Of_Interest.png)  
+   Defined in `AreasOfInterest.png`, encompassing the most severely affected districts.
+
 ## Data & Methods
 The project utilizes pre- and post-event satellite imagery, machine learning-based classification, and crowdsourced tagging to identify and categorize building damage levels across affected regions.
 
