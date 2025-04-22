@@ -1,3 +1,7 @@
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.15245167.svg)](https://zenodo.org/records/15245167)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/license/MIT)
+
+
 # 2025 Mw-7.7 Earthquake Impact Assessment in Myanmar and Thailand using Remote Sensing Data
 
 ## Project Overview
@@ -21,7 +25,7 @@ Key components:
 - Visualization through Mapbox-based interactive maps
 
 ## Web Map Visualization
-https://bentonite.github.io/Myanmar-Earthquake-Damage-Map/
+https://impactsquad.github.io/Myanmar-Earthquake-Damage-Map/
 
 ## Want to cite this GitHub repository?
 If you use this project or its outputs in your research, please cite:
