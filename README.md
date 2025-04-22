@@ -5,7 +5,7 @@
 # 2025 Mw-7.7 Earthquake Impact Assessment in Myanmar and Thailand using Remote Sensing Data
 
 ## Project Overview
-MyanmarEQ2025 is a collaborative volunteer project under IMPACTSquad, focused on assessing post-earthquake building damage in Myanmar following the 2025 seismic event. The goal is to support rapid damage assessment using remote sensing data, image signal processing methods, and collaborative mapping tools.
+MyanmarEQ2025 is a collaborative volunteer project under Integrated Multimodal Pattern Analysis for Climate Transformation Research Group at the University of Cambridge, focused on assessing post-earthquake building damage in Myanmar following the 2025 seismic event. The goal is to support rapid damage assessment using remote sensing data, image signal processing methods, and collaborative mapping tools.
 
 ## Project Objectives
 - Rapid post-disaster building damage assessment using EO data and various signal processing methods
