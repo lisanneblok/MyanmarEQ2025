@@ -1,4 +1,3 @@
-
 import rasterio
 
 def load_raster(file_path):

@@ -32,3 +32,4 @@ def save_raster(output_path, data, profile):
     import rasterio
     with rasterio.open(output_path, 'w', **profile) as dst:
         dst.write(data, 1)
+
