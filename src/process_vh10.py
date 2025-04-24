@@ -61,6 +61,7 @@ class RasterProcessor:
 if __name__ == "__main__":
     region = "myanmar"
     # region = "pair1"
+    # region = "pair2"
     # region = "pair20"
     
     processor = RasterProcessor(region)
