@@ -7,7 +7,7 @@ from deep_translator import GoogleTranslator
 from tqdm import tqdm
 
 
-# The translation function to loop through columns and rows
+# The translation function from Thai to English
 def translate_text(text):
     if pd.isna(text) or not isinstance(text, str):  # Skip NaN and non-string values
         return text
@@ -17,10 +17,12 @@ def translate_text(text):
         print(f"Translation error: {e}")
         return text  # Return original text in case of error
 
-# Wrap tqdm around the DataFrame to track progress
+
+# Track progress
 def translate_dataframe(df):
     tqdm.pandas()  # Initialize tqdm for pandas
     return df.progress_applymap(translate_text)  # Apply function across all cells with progress bar
+
 
 # Main function
 def main():
@@ -35,6 +37,6 @@ def main():
     df_translated.to_csv("/Users/lb962/Documents/GitHub/MyanmarEQ2025/traffy_processing/traffy_data/Translated.csv", index=False)
     print("Translation complete and saved as 'Translated.csv'.")
 
-# Ensure the main function is called only when this script is executed directly
+
 if __name__ == "__main__":
     main()
